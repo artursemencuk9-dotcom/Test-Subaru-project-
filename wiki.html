@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBARU WIKI - Техническая База Данных</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .wiki-header { padding: 60px 0 30px 0; }
+        .wiki-container { max-width: 900px; margin: 0 auto; padding-bottom: 100px; }
+        .back-btn { display: inline-block; color: var(--subaru-cyan); text-decoration: none; font-size: 14px; font-weight: bold; margin-bottom: 20px; transition: 0.3s; }
+        .back-btn:hover { color: #fff; text-shadow: 0 0 10px var(--subaru-glow); }
+
+        details { background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 20px; overflow: hidden; backdrop-filter: blur(10px); transition: border-color 0.3s; }
+        details:hover { border-color: var(--border-glow); }
+        details[open] { border-color: rgba(0, 116, 228, 0.4); box-shadow: 0 10px 30px rgba(0, 51, 153, 0.1); }
+        summary { padding: 24px; font-size: 18px; font-weight: 700; color: #ffffff; cursor: pointer; list-style: none; position: relative; user-select: none; }
+        summary::after { content: '＋'; position: absolute; right: 24px; color: var(--subaru-cyan); font-weight: bold; transition: transform 0.3s; }
+        details[open] summary::after { content: '－'; color: #ff3366; }
+
+        .wiki-content { padding: 0 24px 24px 24px; border-top: 1px solid rgba(255, 255, 255, 0.03); color: #d1dbe5; font-size: 15px; }
+        .wiki-table { width: 100%; border-collapse: collapse; margin: 20px 0 10px 0; font-size: 14px; }
+        .wiki-table th, .wiki-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .wiki-table th { background: rgba(0, 116, 228, 0.1); color: var(--subaru-cyan); font-weight: 600; }
+        .wiki-table tr:hover td { background: rgba(255, 255, 255, 0.02); }
+        .alert-box { background: rgba(255, 153, 0, 0.08); border-left: 4px solid #ff9900; padding: 15px; border-radius: 4px; margin-top: 15px; font-size: 13px; color: #ffb03a; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-grid">
+            <div class="logo">SUBARU<span>WIKI</span></div>
+            <nav><a href="index.html">← На главную</a></nav>
+        </div>
+    </header>
+
+    <div class="container wiki-header">
+        <a href="index.html" class="back-btn">← Вернуться к онлайн-базе</a>
+        <h1 class="section-title">ТЕХНИЧЕСКИЙ РЕГЛАМЕНТ <span>И МАНУАЛЫ</span></h1>
+    </div>
+
+    <main class="container wiki-container">
+        <details open>
+            <summary>Линейка двигателей BOXER: Спецификации и отличия</summary>
+            <div class="wiki-content">
+                <p>Горизонтально-оппозитная компоновка поршней обеспечивает идеальный баланс вращающихся масс.</p>
+                <table class="wiki-table">
+                    <thead><tr><th>Серия</th><th>ГРМ / Конструкция</th><th>Особенности</th><th>Ресурс</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>EJ204 / EJ253</strong></td><td>Атмосферные, ремень</td><td>Самые надежные "ежи". Простые в обслуживании.</td><td>250 000+ км</td></tr>
+                        <tr><td><strong>EJ207 / EJ257</strong></td><td>Турбо, полублок, ремень</td><td>Легендарные ДВС для WRX STI. Склонны к прогару поршней.</td><td>Зависит от буста</td></tr>
+                        <tr><td><strong>FB20 / FB25</strong></td><td>Атмосферные, цепь ГРМ</td><td>Новое поколение. Облегченные поршни, высокая экономичность.</td><td>200 000+ км</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+        <details>
+            <summary>Карта смазочных материалов и допуски жидкостей</summary>
+            <div class="wiki-content">
+                <p>Турбированные и высокооборотистые оппозитные моторы Subaru критически требовательны к маслу.</p>
+                <table class="wiki-table">
+                    <thead><tr><th>Узел</th><th>Рекомендуемая вязкость / Допуск</th><th>Интервал замены</th></tr></thead>
+                    <tbody>
+                        <tr><td>ДВС Атмосферные</td><td>0W-20 / 5W-30 (API SN, ILSAC GF-5)</td><td>7 000 - 7 500 км</td></tr>
+                        <tr><td>ДВС Турбо</td><td>5W-30 / 5W-40 (Спортивные серии с высоким HTHS)</td><td>5 000 км (строго!)</td></tr>
+                        <tr><td>Вариатор (CVT)</td><td>Subaru High Torque CVT Fluid / СVT Fluid II</td><td>45 000 - 60 000 км</td></tr>
+                    </tbody>
+                </table>
+                <div class="alert-box">
+                    <strong>ВАЖНО ДЛЯ ТУРБО:</strong> Регулярно проверяйте уровень масла. Масляное голодание — главная причина капиталки.
+                </div>
+            </div>
+        </details>
+
+        <details>
+            <summary>Устройство полного привода: В чем разница AWD систем?</summary>
+            <div class="wiki-content">
+                <p>Марка Subaru использует 4 абсолютно разные системы полного привода:</p>
+                <ul style="padding-left: 20px; margin-top: 10px; line-height: 1.8;">
+                    <li><strong>ACT (Active Torque Split):</strong> Вариатор Lineartronic. Распределение 60:40.</li>
+                    <li><strong>VTD (Variable Torque Distribution):</strong> Планетарный дифференциал. Распределение 45:55.</li>
+                    <li><strong>CDG (Continuous AWD):</strong> Классическая честная механика. Честные 50:50.</li>
+                    <li><strong>DCCD (Driver's Control Center Differential):</strong> Вершина инженерной мысли STI с ручной блокировкой.</li>
+                </ul>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBARU PROJECT - Резиденты Клуба</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Специфические стили для галереи резидентов */
+        .residents-header {
+            padding: 60px 0 20px 0;
+            text-align: center;
+        }
+
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: rgba(10, 14, 26, 0.6);
+            border: 1px solid var(--border);
+            color: var(--text-gray);
+            padding: 10px 22px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            color: #ffffff;
+            border-color: var(--subaru-cyan);
+            background: var(--subaru-blue);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.25), inset 0 0 8px rgba(255,255,255,0.1);
+        }
+
+        .car-card {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .car-card.hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            position: absolute;
+            visibility: hidden;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-grid">
+            <div class="logo">SUBARU<span>PROJECT</span></div>
+            <nav>
+                <a href="index.html">Главная</a>
+                <a href="wiki.html" class="wiki-link">База Знаний ↗</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container residents-header">
+        <h1 class="section-title">РЕЗИДЕНТЫ <span>КЛУБА</span></h1>
+        <p style="color: var(--text-gray); max-width: 600px; margin: -30px auto 40px auto; font-size: 15px;">
+            Официальный реестр верифицированных автомобилей и участников экосистемы. Используйте фильтры для поиска моделей.
+        </p>
+        
+        <!-- Интерактивные кнопки-фильтры -->
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Все авто</button>
+            <button class="filter-btn" data-filter="wrx">WRX / STI</button>
+            <button class="filter-btn" data-filter="forester">Forester</button>
+            <button class="filter-btn" data-filter="outback">Outback</button>
+            <button class="filter-btn" data-filter="brz">BRZ</button>
+        </div>
+    </div>
+
+    <!-- Основная сетка выставки участников -->
+    <main class="container" style="padding-bottom: 100px;">
+        <div class="exhibit-grid" id="residentsGrid">
+            
+            <!-- Карточка 1 (Категория: wrx) -->
+            <div class="car-card" data-model="wrx">
+                <div class="car-img-wrapper">
+                    <img src="https://unsplash.com" alt="Subaru WRX">
+                </div>
+                <div class="car-info">
+                    <span class="owner-badge">Алексей К.</span>
+                    <h4 style="margin-bottom: 2px;">Subaru Impreza WRX STI</h4>
+                    <p style="color: var(--subaru-cyan); font-weight: 700; font-size: 12px; margin-bottom: 12px;">Год: 2012 • г. Москва</p>
+                    <p style="margin-bottom: 15px;">Мощность: 300 л.с. • Двигатель: EJ257. Подвеска BC Racing, оригинальный выхлоп Invidia.</p>
+                    
+                    <div class="owner-socials">
+                        <a href="https://t.me" target="_blank" class="social-icon tg" title="Telegram">TG</a>
+                        <a href="https://vk.com" target="_blank" class="social-icon vk" title="ВКонтакте">VK</a>
+                        <a href="https://drive2.ru" target="_blank" class="social-icon d2" title="Drive2">D2</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Карточка 2 (Категория: brz) -->
+            <div class="car-card" data-model="brz">
+                <div class="car-img-wrapper">
+                    <img src="https://unsplash.com" alt="Subaru BRZ">
+                </div>
+                <div class="car-info">
+                    <span class="owner-badge">Влад М.</span>
+                    <h4 style="margin-bottom: 2px;">Subaru BRZ Performance</h4>
+                    <p style="color: var(--subaru-cyan); font-weight: 700; font-size: 12px; margin-bottom: 12px;">Год: 2021 • г. Сочи</p>
+                    <p style="margin-bottom: 15px;">Привод: Задний • Коробка: МКПП. Низкий стенс-проект, японские составные диски Work.</p>
+                    
+                    <div class="owner-socials">
+                        <a href="https://t.me" target="_blank" class="social-icon tg" title="Telegram">TG</a>
+                        <a href="https://drive2.ru" target="_blank" class="social-icon d2" title="Drive2">D2</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const carCards = document.querySelectorAll('#residentsGrid .car-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    carCards.forEach(card => {
+                        const cardModel = card.getAttribute('data-model');
+
+                        if (filterValue === 'all' || filterValue === cardModel) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
