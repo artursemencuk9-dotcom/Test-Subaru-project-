@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUBARU WORLD - Клубный Проект</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cloudflare.com"></script>
+</head>
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="container header-grid">
+            <div class="logo">SUBARU<span>PROJECT</span></div>
+            <nav>
+                <a href="wiki.html" class="wiki-link">База Знаний ↗</a>
+                <a href="#about">О проекте</a>
+                <a href="residents.html">Резиденты</a>
+                <a href="#join">Регистрация</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero container">
+        <span class="hero-badge">Digital Club Ecosystem</span>
+        <h1>ЕДИНАЯ ОНЛАЙН-БАЗА СУБАРУ</h1>
+        <p>Выставляйте свой автомобиль на интерактивную экспозицию, генерируйте официальный цифровой сертификат резидента с QR-кодом и изучайте глубокие мануалы в нашей базе знаний.</p>
+    </section>
+
+    <!-- Раздел: О Проекте & Миссия клуба -->
+    <section id="about" class="container" style="padding: 40px 0 60px 0; border-bottom: 1px solid var(--border);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 50px; align-items: center;">
+            <div>
+                <h2 style="font-size: 28px; font-weight: 900; text-transform: uppercase; margin-bottom: 20px; letter-spacing: -0.5px;">
+                    О проекте <span>/ Идея и цель</span>
+                </h2>
+                <p style="color: var(--text-gray); font-size: 15px; margin-bottom: 15px; line-height: 1.7;">
+                    <strong>SUBARU PROJECT</strong> — это цифровая экосистема, созданная инженерами и фанатами марки. Наша цель — объединить владельцев Subaru в единую сеть, где каждый автомобиль имеет свою верифицированную историю, ID резидента и персональный цифровой паспорт.
+                </p>
+                <p style="color: var(--text-gray); font-size: 15px; line-height: 1.7;">
+                    Мы оцифровываем авто-сообщество. Получая наш сертификат, вы подтверждаете свою принадлежность к глобальной культуре оппозитных моторов. Сканируя QR-код на кузове, любой человек сможет мгновенно открыть спецификацию вашего автомобиля на нашей онлайн-выставке и связаться с вами в соцсетях.
+                </p>
+            </div>
+            
+            <div style="display: grid; gap: 20px;">
+                <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: 8px;">
+                    <h3 style="color: var(--subaru-cyan); font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">01. Объединение культуры</h3>
+                    <p style="color: var(--text-gray); font-size: 13px;">Сбор редких, тюнинг- и классических проектов в одном месте. От ретро-моделей Leone до трековых WRX STI.</p>
+                </div>
+                <div style="background: var(--bg-card); border: 1px solid var(--border); padding: 25px; border-radius: 8px;">
+                    <h3 style="color: var(--subaru-cyan); font-size: 16px; font-weight: 800; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px;">02. Техническая прозрачность</h3>
+                    <p style="color: var(--text-gray); font-size: 13px;">Исключение фейков. Каждая машина в базе привязана к уникальному ID резидента, исключая дублирование данных.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Раздел: Индикаторы статистики клуба (Приборная панель) -->
+    <section class="container stats-section">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value" id="statResidents" data-target="142">0</div>
+                <div class="stat-label">Резидентов в клубе</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="statCities" data-target="38">0</div>
+                <div class="stat-label">Городов присутствия</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="statHp" data-target="36400">0</div>
+                <div class="stat-label">Суммарная мощность (л.с.)</div>
+            </div>
+        </div>
+    </section>
+    <!-- Раздел: Регистрация и Сертификат -->
+    <section id="join" class="container">
+        <h2 class="section-title">Стать резидентом <span>и получить ID</span></h2>
+        <div class="join-box">
+            
+            <!-- Форма ввода данных -->
+            <div class="join-form">
+                <form id="regForm">
+                    <input type="text" id="userName" placeholder="Ваше Имя и Фамилия" required>
+                    <input type="text" id="userCity" placeholder="Город" required>
+                    <select id="carModel" required>
+                        <option value="">Выберите модель авто</option>
+                        <option value="Impreza / WRX / STI">Impreza / WRX / STI</option>
+                        <option value="Forester">Forester</option>
+                        <option value="Outback">Outback</option>
+                        <option value="Legacy">Legacy</option>
+                        <option value="BRZ">BRZ</option>
+                    </select>
+                    <input type="text" id="carYear" placeholder="Год выпуска" required>
+                    
+                    <!-- Новые поля ввода социальных сетей владельца -->
+                    <input type="text" id="userTg" placeholder="Ник в Telegram (например: @username)">
+                    <input type="text" id="userVk" placeholder="Ссылка на VK (например: ://vk.com)">
+                    
+                    <button type="submit" class="join-btn">Внести в базу и сгенерировать</button>
+                </form>
+            </div>
+
+            <!-- Зона вывода готового графического сертификата -->
+            <div class="certificate-display" id="certDisplay">
+                <div id="certPlaceholder" style="color: var(--text-gray); font-size: 14px; text-align: center;">
+                    Заполните форму слева, чтобы сформировать именной сертификат с индивидуальным QR-кодом резидента клуба.
+                </div>
+                
+                <div class="cert-result-container" id="certResultContainer">
+                    <div id="imagePreviewBox"></div>
+                    <button id="downloadBtn" class="download-btn">Скачать сертификат (.PNG)</button>
+                </div>
+
+                <canvas id="certCanvas" style="display: none;"></canvas>
+                <div id="qrcode" style="display: none;"></div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
